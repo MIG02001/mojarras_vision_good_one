@@ -40,7 +40,17 @@ class Point:
     def __init__(self, x: int = 0, y: int = 0) -> None:
         self.x = x
         self.y = y
-    
+
+class Area:
+    def __init__(self, minimum: Point, maximum: Point) -> None:
+        self.minimum = minimum
+        self.maximum = maximum
+
+    def isAreaInsideOf(self, minimum: Point, maximum: Point) -> bool:
+        if self.minimum.x <= minimum.x and self.minimum.y <= minimum.y and self.maximum.x >= maximum.x and self.maximum.y >= maximum.y:
+            return True
+        return False
+
 class Drawer:
     def __init__(self, frame):
         self.frame = frame
@@ -140,217 +150,27 @@ r4_max3 = Point(970, 430)
 r4_min4 = Point(600, 375)
 r4_max4 = Point(750, 430)
 
+#! Areas
+areas_r1 = [Area(r1_min1, r1_max1), Area(r1_min2, r1_max2), Area(r1_min3, r1_max3), Area(r1_min4, r1_max4), Area(r1_min5, r1_max5), Area(r1_min6, r1_max6)]
+areas_r2 = [Area(r2_min1, r2_max1), Area(r2_min2, r2_max2), Area(r2_min3, r2_max3), Area(r2_min4, r2_max4)]
+areas_r3 = [Area(r3_min1, r3_max1), Area(r3_min2, r3_max2), Area(r3_min3, r3_max3), Area(r3_min4, r3_max4), Area(r3_min5, r3_max5)]
+areas_r4 = [Area(r4_min1, r4_max1), Area(r4_min2, r4_max2), Area(r4_min3, r4_max3), Area(r4_min4, r4_max4)]
 
-#Condicionales de R1
-def areasR1(ymin,xmin,ymax,xmax):
-    global R1   
-    if roi_xmin6 <= xmin <= roi_xmax6 and roi_ymin6 <= ymin <= roi_ymax6:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R1 = 6
-    elif roi_xmin5 <= xmin <= roi_xmax5 and roi_ymin5 <= ymin <= roi_ymax5:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R1 = 5
-    elif roi_xmin4 <= xmin <= roi_xmax4 and roi_ymin4 <= ymin <= roi_ymax4:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R1 = 4
-    elif roi_xmin3 <= xmin <= roi_xmax3 and roi_ymin3 <= ymin <= roi_ymax3:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R1 = 3
-    elif roi_xmin2 <= xmin <= roi_xmax2 and roi_ymin2 <= ymin <= roi_ymax2:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R1 = 2
-    elif roi_xmin1 <= xmin <= roi_xmax1 and roi_ymin1 <= ymin <= roi_ymax1:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R1 = 1
-    return R1
+class GeometricCalculation:
+    def __init__(self, minimumPoint: Point, maximumPoint: Point) -> None:
+        self.minimumPoint = minimumPoint
+        self.maximumPoint = maximumPoint
+        self.area = Area(self.minimumPoint, self.maximumPoint)
 
-#Condicionales R2
-def areasR2(ymin,xmin,ymax,xmax):
-    global R2
-    if r2_xmin4 <= xmin <= r2_xmax4 and r2_ymin4 <= ymin <= r2_ymax4:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R2 = 4
-    elif r2_xmin3 <= xmin <= r2_xmax3 and r2_ymin3 <= ymin <= r2_ymax3:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R2 = 3
-    elif r2_xmin2 <= xmin <= r2_xmax2 and r2_ymin2 <= ymin <= r2_ymax2:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R2 = 2
-    elif r2_xmin1 <= xmin <= r2_xmax1 and r2_ymin1 <= ymin <= r2_ymax1:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R2 = 1
-    return R2
-
-#R3 conditionals
-def areasR3(ymin,xmin,ymax,xmax):
-    global R3
-    if r3_xmin5 <= xmin <= r3_xmax5 and r3_ymin5 <= ymin <= r3_ymax5:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R3 = 5
-    elif r3_xmin4 <= xmin <= r3_xmax4 and r3_ymin4 <= ymin <= r3_ymax4:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R3 = 4
-    elif r3_xmin3 <= xmin <= r3_xmax3 and r3_ymin3 <= ymin <= r3_ymax3:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R3 = 3
-    elif r3_xmin2 <= xmin <= r3_xmax2 and r3_ymin2 <= ymin <= r3_ymax2:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R3 = 2
-    elif r3_xmin1 <= xmin <= r3_xmax1 and r3_ymin1 <= ymin <= r3_ymax1:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R3 = 1
-    return R3
-
-#R4 conditionals
-def areasR4(ymin,xmin,ymax,xmax):
-    global R4
-    if r4_xmin4 <= xmin <= r4_xmax4 and r4_ymin4 <= ymin <= r4_ymax4:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R4 = 4
-    elif r4_xmin3 <= xmin <= r4_xmax3 and r4_ymin3 <= ymin <= r4_ymax3:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R4 = 3
-    elif r4_xmin2 <= xmin <= r4_xmax2 and r4_ymin2 <= ymin <= r4_ymax2:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R4 = 2
-    elif r4_xmin1 <= xmin <= r4_xmax1 and r4_ymin1 <= ymin <= r4_ymax1:
-        cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
-        # Draw label
-        object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
-        label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
-        labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
-        label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-        cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-        cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
-        R4 = 1
-    return R4
-
+    def calculate_number_of_cars(self, areas: list) -> int:
+        maximum_number = 0
+        for idx, area in enumerate(areas):
+            isCarInside = self.area.isAreaInsideOf(area.minimum, area.maximum)
+            if isCarInside:
+                possible_maximum = idx + 1
+                if possible_maximum > maximum_number:
+                    maximum_number = possible_maximum
+        return maximum_number
 
 # Import TensorFlow libraries
 # If tflite_runtime is installed, import interpreter from tflite_runtime, else import from regular tensorflow
@@ -463,11 +283,15 @@ while(video.isOpened()):
             xmin = int(max(1,(boxes[i][1] * imW)))
             ymax = int(min(imH,(boxes[i][2] * imH)))
             xmax = int(min(imW,(boxes[i][3] * imW)))
-            
-            R1 = areasR1(ymin,xmin,ymax,xmax)
-            R2 = areasR2(ymin,xmin,ymax,xmax)
-            R3 = areasR3(ymin,xmin,ymax,xmax)
-            R4 = areasR4(ymin,xmin,ymax,xmax)
+
+            area_calculator = GeometricCalculation(Point(xmin, ymin), Point(xmax, ymax))
+
+            R1 = area_calculator.calculate_number_of_cars(areas_r1)
+            R2 = area_calculator.calculate_number_of_cars(areas_r2)
+            R3 = area_calculator.calculate_number_of_cars(areas_r3)
+            R4 = area_calculator.calculate_number_of_cars(areas_r4)
+
+            print(f"current Rs" + R1 + "  " + R2 + "  " + R3 + "  " + R4)
             
     drawer = Drawer(frame=frame)
 
@@ -496,13 +320,6 @@ while(video.isOpened()):
     drawer.draw_rectangle(r4_min2, r4_max2)
     drawer.draw_rectangle(r4_min3, r4_max3)
     drawer.draw_rectangle(r4_min4, r4_max4)
-    
-    #? Printing results
-    R1 = str(R1)
-    R2 = str(R2)
-    R3 = str(R3)
-    R4 = str(R4)
-    print(f"current Rs" + R1 + "  " + R2 + "  " + R3 + "  " + R4)
         
     #Frame conf
     frame_resized = cv2.resize(frame, None, interpolation = cv2.INTER_CUBIC, fx = 0.8, fy = 0.78) 
