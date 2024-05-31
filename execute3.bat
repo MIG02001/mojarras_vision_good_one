@@ -1,0 +1,1 @@
+python -m mojarras_video --modeldir=custom_model_lite --video=prueba3.mp4

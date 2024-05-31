@@ -1,1 +1,1 @@
-python -m TFLite_detection_webcam --modeldir=custom_model_lite
+python -m mojarras_video --modeldir=custom_model_lite --video=final.mp4

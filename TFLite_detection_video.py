@@ -536,5 +536,4 @@ while(video.isOpened()):
 # Clean up
 video.release()
 cv2.destroyAllWindows()
-
-
+     
